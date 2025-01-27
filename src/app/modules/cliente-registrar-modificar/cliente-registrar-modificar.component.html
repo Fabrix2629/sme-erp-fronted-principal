@@ -15,7 +15,7 @@
       >
         <option
           *ngFor="let tipo of tiposContribuyentes"
-          [ngValue]="tipo.idTipoContribuyente"
+          [value]="tipo.idTipoContribuyente"
         >
           {{ tipo.nombre }}
         </option>
@@ -31,7 +31,7 @@
       >
         <option
           *ngFor="let tipo of tiposDocumentos"
-          [ngValue]="tipo.idTipoDocumento"
+          [value]="tipo.idTipoDocumento"
         >
           {{ tipo.nombre }}
         </option>

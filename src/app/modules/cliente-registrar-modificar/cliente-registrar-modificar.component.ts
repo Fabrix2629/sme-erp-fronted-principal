@@ -88,6 +88,8 @@ export default class ClienteRegistrarModificarComponent implements OnInit {
   }
 
   agregarEditar() {
+    console.log('Formulario:', this.form?.value);
+    console.log('Formulario:', this.form!.value.tipoDocumento);
     const formularioCliente: SmCliente = {
       ...this.form!.value,
       tipoDocumento: {
@@ -97,7 +99,7 @@ export default class ClienteRegistrarModificarComponent implements OnInit {
         idTipoContribuyente: Number(this.form!.value.tipoContribuyente),
       },
     };
-
+    console.log('Formularioclie:', formularioCliente);
     const idEntidad = this.smCliente?.idEntidad;
 
     if (this.smCliente) {

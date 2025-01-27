@@ -1,0 +1,113 @@
+<h2 class="mb-5">@if (smCliente) { Editar Cliente } @else { Nuevo Cliente }</h2>
+
+<div class="row row-cols-3 justify-content-center">
+  @if (form) {
+  <form [formGroup]="form" (ngSubmit)="agregarEditar()">
+    <div class="mb-3">
+      <label for="tipoContribuyente" class="form-label"
+        >Tipo Contribuyente</label
+      >
+      <select
+        id="tipoContribuyente"
+        name="tipoContribuyente"
+        formControlName="tipoContribuyente"
+        class="form-control"
+      >
+        <option
+          *ngFor="let tipo of tiposContribuyentes"
+          [ngValue]="tipo.idTipoContribuyente"
+        >
+          {{ tipo.nombre }}
+        </option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="tipoDocumento" class="form-label">Tipo Documento</label>
+      <select
+        id="tipoDocumento"
+        name="tipoDocumento"
+        formControlName="tipoDocumento"
+        class="form-control"
+      >
+        <option
+          *ngFor="let tipo of tiposDocumentos"
+          [ngValue]="tipo.idTipoDocumento"
+        >
+          {{ tipo.nombre }}
+        </option>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="numeroDocumento" class="form-label"
+        >Número de Documento</label
+      >
+      <input
+        id="numeroDocumento"
+        name="numeroDocumento"
+        formControlName="nroDocumento"
+        type="text"
+        placeholder="Ej. 123456789"
+        class="form-control"
+      />
+      @if (form.get('nroDocumento')?.hasError('required')) {
+      <p class="invalid-feedback d-block">
+        El número de documento es obligatorio
+      </p>
+      }
+    </div>
+    <div class="mb-3">
+      <label for="razonSocial" class="form-label">Razón Social</label>
+      <input
+        id="razonSocial"
+        name="razonSocial"
+        formControlName="razonSocial"
+        type="text"
+        placeholder="Ej. Empresa S.A.C."
+        class="form-control"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="nombreComercial" class="form-label">Nombre Comercial</label>
+      <input
+        id="nombreComercial"
+        name="nombreComercial"
+        formControlName="nombreComercial"
+        type="text"
+        placeholder="Ej. Comercial XYZ"
+        class="form-control"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="direccion" class="form-label">Dirección</label>
+      <input
+        id="direccion"
+        name="direccion"
+        formControlName="direccion"
+        type="text"
+        placeholder="Ej. Av. Principal 123"
+        class="form-control"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="telefono" class="form-label">Número de Teléfono</label>
+      <input
+        id="telefono"
+        name="telefono"
+        formControlName="telefono"
+        type="tel"
+        placeholder="Ej. 987654321"
+        class="form-control"
+        pattern="[0-9]*"
+      />
+    </div>
+    <div class="text-end">
+      <button type="button" class="btn btn-light" routerLink="/">
+        Cancelar
+      </button>
+      <button class="btn btn-primary ms-2">
+        @if (smCliente) { Actualizar } @else { Crear }
+      </button>
+    </div>
+  </form>
+  }
+</div>

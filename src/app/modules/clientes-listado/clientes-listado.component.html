@@ -1,0 +1,50 @@
+<div class="container">
+  <div class="header">
+    <h2 class="mb-5">Sistema de Mantenimiento (SM)</h2>
+    <div class="text-end">
+      <button class="btn btn-primary" routerLink="/new">Nuevo Cliente</button>
+    </div>
+  </div>
+
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>Tipo contribuyente</th>
+        <th>Tipo documento</th>
+        <th>Número documento</th>
+        <th>Razón social</th>
+        <th>Nombre Comercial</th>
+        <th>Dirección</th>
+        <th>Telefono</th>
+        <th>Opciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (cliente of listClientes; track listClientes) {
+      <tr>
+        <td>{{ cliente.tipoContribuyente?.nombre }}</td>
+        <td>{{ cliente.tipoDocumento?.nombre }}</td>
+        <td>{{ cliente.nroDocumento }}</td>
+        <td>{{ cliente.razonSocial }}</td>
+        <td>{{ cliente.nombreComercial }}</td>
+        <td>{{ cliente.direccion }}</td>
+        <td>{{ cliente.telefono }}</td>
+        <td class="text-center">
+          <div class="btn-group">
+            <button
+              type="button"
+              class="btn btn-primary ms-2"
+              [routerLink]="[cliente.idEntidad, 'edit']"
+            >
+              Editar
+            </button>
+            <button class="btn btn-danger" (click)="eliminarCliente(cliente)">
+              Eliminar
+            </button>
+          </div>
+        </td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
